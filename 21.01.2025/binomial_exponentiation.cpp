@@ -1,26 +1,30 @@
+
 #include <bits/stdc++.h>
 #define nl '\n'
 #define ll long long int
 #define all(v) v.begin(),v.end()
 #define print(v) for(auto data : v) cout << data << " "; cout << nl
 using namespace std;
-void solve()
+const int MOD = 1E9 + 7;
+ll Pow(ll x, ll y)
 {
-    int n; cin >> n; vector<ll> v(n); for(auto &c : v) cin >> c;
-
-    int cnt = 0;
-    for(int i=0; i<n; i++)
+    ll ans = 1;
+    while(y)
     {
-        bool isMatch = false;
-        for(int j=0; j<n; j++)
-        {
-            if(i == j) continue;
-            if(v[i]%v[j] == 0) isMatch = true;
-        }
-        if(isMatch == false) cnt++;
+        if(y & 1) ans *= x;
+        //if(y & 1) ans = (ans * x) % MOD; // if MOD is given
+
+        y >>= 1;
+        x *= x;
+        //x = (x * x) % MOD; // if MOD is given
     }
 
-    cout << cnt << nl;
+    return ans;
+}
+void solve()
+{
+    ll x = 2, y = 4;
+    cout << Pow(x, y) << nl;
 }
 int main()
 {

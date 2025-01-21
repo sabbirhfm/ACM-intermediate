@@ -7,7 +7,7 @@
 using namespace std;
 void solve()
 {
-
+    cout << (1ll* 1 << 1ll* 30);
 }
 int main()
 {

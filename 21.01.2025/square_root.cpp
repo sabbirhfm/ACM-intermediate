@@ -1,3 +1,4 @@
+
 #include <bits/stdc++.h>
 #define nl '\n'
 #define ll long long int
@@ -6,21 +7,18 @@
 using namespace std;
 void solve()
 {
-    int n; cin >> n; vector<ll> v(n); for(auto &c : v) cin >> c;
-
-    int cnt = 0;
-    for(int i=0; i<n; i++)
+    int n = 16;
+    int l = 1, r = n-1, mid, ans = -1;
+    while(l <= r)
     {
-        bool isMatch = false;
-        for(int j=0; j<n; j++)
+        mid = l + (r-l)/2;
+        if(mid * mid <= n)
         {
-            if(i == j) continue;
-            if(v[i]%v[j] == 0) isMatch = true;
+            ans = mid; l = mid + 1;
         }
-        if(isMatch == false) cnt++;
+        else r = mid - 1;
     }
-
-    cout << cnt << nl;
+    cout << ans * ans << nl;
 }
 int main()
 {
@@ -33,3 +31,4 @@ int main()
 
     return 0;
 }
+
