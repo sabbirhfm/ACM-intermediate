@@ -56,7 +56,8 @@ int main()
 
     //int t; cin >> t;
     //while (t--) solve();
-    solve();
+    //solve();
+    cout <<"he" << nl;
 
 
     return 0;
