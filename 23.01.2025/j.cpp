@@ -4,34 +4,30 @@
 #define all(v) v.begin(),v.end()
 #define print(v) for(auto data : v) cout << data << " "; cout << nl
 using namespace std;
-const int N = 2E5;
-vector<set<int> > divisors(N+1);
+const int N = 1E6;
 void solve()
 {
-    int n;
-    //cin >> n;
-    n = N;
-    //vector<ll> v(n); for(auto &c : v) cin >> c;
+    int n; cin >> n;
 
-    // pre-calculate divisors
-    bool comp[n+1] = {0}; comp[1] = true;
+    vector<ll> v(n); for(auto &c : v) cin >> c;
 
-    for(int i=2; i<=n; i++)
+    vector<int> arr[N+1];
+
+    map<ll, ll> mp;
+    for(auto data : v) mp[data]++;
+
+    // now implement sieve [variation]
+
+    for(int i=2; i<=N; i++)
     {
-        if(comp[i]) continue;
-        divisors[i].insert(i);
-
-        for(int j=i+i; j<=n; j+=i)
+        for(int j=i; j<=N; j+=i)
         {
-            comp[j] = true;
-            divisors[j].insert(i);
+            arr[j].push_back(i);
         }
     }
 
-    for(int i=2; i<100; i++)
+    for(auto data : arr)
     {
-        auto data = divisors[i];
-        cout << i << " -> ";
         print(data);
     }
 
